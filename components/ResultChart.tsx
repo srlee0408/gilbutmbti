@@ -27,31 +27,49 @@ export interface ResultChartProps {
 
 export function ResultChart({ percentages }: ResultChartProps) {
   return (
-    <div className="w-full max-w-md space-y-5">
+    <div className="w-full max-w-md space-y-6">
       {DIMENSIONS.map(({ key, left, right }) => {
         const leftPct = percentages[key];
         const rightPct = 100 - leftPct;
         return (
-          <div key={key} className="space-y-1.5">
-            <div className="flex justify-between text-sm font-medium text-zinc-600">
-              <span className={leftPct >= 50 ? "text-amber-700" : ""}>
+          <div key={key} className="space-y-2">
+            <div className="flex justify-between text-sm font-medium text-(--muted)">
+              <span
+                className={
+                  leftPct >= 50 ? "font-semibold text-(--accent)" : ""
+                }
+              >
                 {left}
               </span>
-              <span className={rightPct > 50 ? "text-amber-700" : ""}>
+              <span
+                className={
+                  rightPct > 50 ? "font-semibold text-(--accent)" : ""
+                }
+              >
                 {right}
               </span>
             </div>
-            <div className="flex h-3 w-full overflow-hidden rounded-full bg-zinc-200">
+            <div
+              className="flex h-2.5 w-full overflow-hidden rounded-sm"
+              style={{ background: "var(--border)" }}
+            >
               <div
-                className="h-full rounded-l-full bg-amber-500 transition-all duration-500 ease-out"
-                style={{ width: `${leftPct}%` }}
+                className="h-full rounded-l-sm transition-all duration-500 ease-out"
+                style={{
+                  width: `${leftPct}%`,
+                  background: "var(--accent)",
+                }}
               />
               <div
-                className="h-full rounded-r-full bg-amber-300/80 transition-all duration-500 ease-out"
-                style={{ width: `${rightPct}%` }}
+                className="h-full rounded-r-sm transition-all duration-500 ease-out"
+                style={{
+                  width: `${rightPct}%`,
+                  background: "var(--accent-gold)",
+                  opacity: 0.85,
+                }}
               />
             </div>
-            <p className="text-center text-xs text-zinc-500">
+            <p className="text-center text-xs text-(--muted)">
               {leftPct}% : {rightPct}%
             </p>
           </div>

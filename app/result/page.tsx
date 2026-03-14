@@ -57,11 +57,14 @@ function ResultContent() {
 
   if (!result) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4">
-        <p className="text-zinc-600">결과를 불러올 수 없습니다.</p>
+      <div
+        className="flex min-h-screen flex-col items-center justify-center gap-4 px-4"
+        style={{ background: "var(--background)" }}
+      >
+        <p className="text-[var(--muted)]">결과를 불러올 수 없습니다.</p>
         <Link
           href="/"
-          className="rounded-full bg-amber-500 px-5 py-2 text-sm font-medium text-white hover:bg-amber-600"
+          className="rounded border border-[var(--accent)] bg-[var(--accent)] px-5 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)]"
         >
           처음으로
         </Link>
@@ -72,22 +75,32 @@ function ResultContent() {
   const { percentages, type, info } = result;
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-amber-50/50 px-4 py-10">
-      <h1 className="mb-2 text-xl font-bold text-amber-900">당신의 MBTI</h1>
-      <p className="mb-8 text-2xl font-bold tracking-widest text-amber-700">
+    <div
+      className="flex min-h-screen flex-col items-center px-4 py-12"
+      style={{ background: "var(--background)" }}
+    >
+      <h1 className="font-editorial mb-2 text-xl font-semibold text-[var(--foreground)]">
+        당신의 MBTI
+      </h1>
+      <p
+        className="font-editorial mb-6 text-3xl font-bold tracking-[0.2em]"
+        style={{ color: "var(--accent)" }}
+      >
         {type}
       </p>
-      <p className="mb-1 text-base font-medium text-zinc-700">{info.name}</p>
-      <p className="mb-10 max-w-md text-center text-sm leading-relaxed text-zinc-600">
+      <p className="font-editorial mb-1 text-base font-semibold text-[var(--foreground)]">
+        {info.name}
+      </p>
+      <p className="mb-10 max-w-md text-center text-sm leading-relaxed text-[var(--muted)]">
         {info.description}
       </p>
-      <h2 className="mb-4 text-sm font-semibold text-zinc-600">
+      <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--muted)]">
         4가지 지표 분포
       </h2>
       <ResultChart percentages={percentages} />
       <Link
         href="/"
-        className="mt-10 rounded-full bg-amber-500 px-6 py-2.5 text-sm font-medium text-white hover:bg-amber-600"
+        className="mt-10 rounded border border-[var(--accent)] bg-[var(--accent)] px-6 py-2.5 text-sm font-medium text-white hover:bg-[var(--accent-hover)]"
       >
         다시 하기
       </Link>
@@ -99,8 +112,11 @@ export default function ResultPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center">
-          <p className="text-zinc-500">결과를 불러오는 중...</p>
+        <div
+          className="flex min-h-screen items-center justify-center"
+          style={{ background: "var(--background)" }}
+        >
+          <p className="text-[var(--muted)]">결과를 불러오는 중...</p>
         </div>
       }
     >

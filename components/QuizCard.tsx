@@ -48,7 +48,7 @@ export function QuizCard({
       }}
     >
       <div
-        className="relative h-[min(70vh,20rem)] w-full rounded-2xl shadow-xl"
+        className="relative h-[min(70vh,20rem)] w-full rounded-lg border border-(--border) bg-(--card-bg) shadow-sm"
         style={{
           transformStyle: "preserve-3d",
           transform: isExiting
@@ -61,31 +61,33 @@ export function QuizCard({
           pointerEvents: isExiting ? "none" : "auto",
         }}
       >
-        {/* 뒷면: 카드 뒤 (질문 없음) */}
+        {/* 뒷면: 에디토리얼 스타일 */}
         <div
-          className="absolute inset-0 flex items-center justify-center rounded-2xl border-2 border-amber-200/60 bg-linear-to-br from-amber-50 to-amber-100/90 shadow-inner"
+          className="absolute inset-0 flex items-center justify-center rounded-lg border border-(--border) bg-background"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
           }}
         >
-          <div className="flex flex-col items-center gap-2 text-amber-800/70">
-            <div className="h-12 w-12 rounded-full border-2 border-amber-300/80 bg-amber-200/50" />
-            <span className="text-xs font-medium tracking-widest opacity-80">
+          <div className="flex flex-col items-center gap-3 font-editorial text-(--muted)">
+            <span className="text-2xl font-semibold tracking-[0.2em] text-(--accent)">
               MBTI
+            </span>
+            <span className="text-xs tracking-widest opacity-70">
+              성격 유형 검사
             </span>
           </div>
         </div>
 
-        {/* 앞면: 질문 + 선택지 */}
+        {/* 앞면: 질문 + 선택지 (에디토리얼) */}
         <div
-          className="absolute inset-0 flex flex-col justify-between rounded-2xl border-2 border-amber-200/60 bg-white p-5 shadow-inner"
+          className="absolute inset-0 flex flex-col justify-between rounded-lg border border-(--border) bg-(--card-bg) p-6"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(0deg)",
           }}
         >
-          <p className="text-base font-medium leading-snug text-zinc-800">
+          <p className="font-editorial text-lg font-semibold leading-snug text-foreground">
             {question.text}
           </p>
           <div className="flex flex-col gap-3">
@@ -94,7 +96,7 @@ export function QuizCard({
                 key={choice.value}
                 type="button"
                 onClick={() => onAnswer(choice.value)}
-                className="rounded-xl border-2 border-amber-200 bg-amber-50/80 py-3 text-sm font-medium text-amber-900 transition-colors hover:border-amber-300 hover:bg-amber-100 active:scale-[0.98]"
+                className="rounded border border-(--accent) bg-transparent py-3 text-sm font-medium text-(--accent) transition-colors hover:bg-(--accent) hover:text-white active:scale-[0.99]"
               >
                 {choice.text}
               </button>

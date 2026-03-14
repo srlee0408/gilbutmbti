@@ -40,8 +40,21 @@ export default function QuizPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-amber-50/50 px-4">
-      <QuizCardStack questions={questions} onComplete={handleComplete} />
+    <div
+      className="flex min-h-screen flex-col"
+      style={{ background: "var(--background)" }}
+    >
+      <header className="shrink-0 border-b border-[var(--border)] px-4 py-4 text-center">
+        <h1 className="font-editorial text-lg font-semibold text-[var(--foreground)]">
+          MBTI 퀴즈
+        </h1>
+        <p className="mt-1 text-xs text-[var(--muted)]">
+          {questions.length}장의 카드를 넘기며 답해 보세요.
+        </p>
+      </header>
+      <div className="flex min-h-0 flex-1 items-center justify-center px-4">
+        <QuizCardStack questions={questions} onComplete={handleComplete} />
+      </div>
     </div>
   );
 }

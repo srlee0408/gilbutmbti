@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+/* 에디토리얼 / 매거진 테마 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf8;
+  --foreground: #1c1c1c;
+  --muted: #525252;
+  --border: #e5e5e0;
+  --accent: #1e3a5f;
+  --accent-hover: #2c4a6f;
+  --accent-gold: #b8860b;
+  --card-bg: #ffffff;
 }
 
 @theme inline {
@@ -10,17 +17,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-noto-serif-kr);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* 에디토리얼 제목/본문용 세리프 */
+.font-editorial {
+  font-family: var(--font-noto-serif-kr), "Noto Serif KR", Georgia, serif;
 }
